@@ -21,8 +21,9 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
   height: 100%;
     }
    
-    iframe {
-      border: none;
+    .iframe {
+      border: medium dashed green;
+      overflow: auto;
     }
   </style>
 </head>
@@ -44,35 +45,45 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
   <script>
     'use strict';
     
-    var Arr_Gruppe = [['Main',	'http://docs.google.com/document/d/1v2pjM45nLPhy760mpEIxG9adLop4lQ4bAHfZ4qXxGBI/edit?usp=sharing',	'http://docs.google.com/spreadsheets/d/1iZDX_WZ4qQfYFSSe1x0SbsqZ_bND3EdgQJs87cK4R20/edit?usp=sharing'],
-     ['Gruppe1',	'https://docs.google.com/document/d/1JXVWEYH78W1RaiX_BfZuPJuNpgR-BOWMr7Mly1NOVhE/edit?usp=sharing',	'https://docs.google.com/spreadsheets/d/1PRWf21KkOu7ax4bOXNWSeMDS19Si2RKhrkyIykTzCq8/edit?usp=sharing'],
-     ['Gruppe2',	'https://docs.google.com/document/d/1jX3XHP3rZlVBV61daLnhZvsjNjtEc2RluIZ_436KbPI/edit?usp=sharing',	'https://docs.google.com/spreadsheets/d/1IsHwmg5T-BN3Rs7PGfWclW7F0_ZMAZzp5XXfowS0YYU/edit?usp=sharing']];
+    var Arr_Gruppe = [["Main","1w4ROhRZfNN1Opc2TUWt-lrFF6KurtHq9avL8fELNBqY",	"1F5yftZSjCIlx2jUVaw8XdSEgw0yizEgZkoXdX6traBM",	"1iFJ9xXESJN8E2vRwjRzYpU7MNqmhSqhvHwdc4OxAl2k"],
+     ["Gruppe1", "1XuPaRVN9HAbq9syvs88oqGV0Y2eYB42DdyD76s_uGXI","1sep8iWGDD1xeCBfIusqIhlUidYAwi64VFOhLN8edsrs",	"1zqTCsYB2rb7ApKx5OF4t_Rs436k0ryF2Daa1ron73Hc"],
+     ["Gruppe2", "1D5zF7H18_Q-B6_JFa0MvNPmylmDlOd9WB53rgJbNeSk","1rjHUJAIoecAIIGLCL3qqpF2u9ViztW2HrBeywRbsR8k",	"11CE9CX05kluWanI19Fr-wu0jMOdd9f1b9839bXXKduY"]];
     
-     var JitMeetingLink = 'https://meet.jit.si/' + Arr_Gruppe[0][0] + '-Der-Talk#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D%22'
-    
+     var JitMeetingLink; //= 'https://meet.jit.si/' + Arr_Gruppe[0][0] + '-Der-Talk#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D%22'
+     var DocumentLink; //
+     var CalcLink; //
+     var DrawLink; //
     document.addEventListener('DOMContentLoaded', function () {    
        document.DropdownGruppe.GruppeWahl.addEventListener('change', CheckAuswahl);
          
         function CheckAuswahl () {
         var menu = document.DropdownGruppe.GruppeWahl;
-        JitMeetingLink = 'https://meet.jit.si/' + Arr_Gruppe[menu.value][0] + '-Der-Talk#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D%22';    
+        JitMeetingLink = 'https://meet.jit.si/' + Arr_Gruppe[menu.value][0] + '-Der-Talk#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D%22';
+        CalcLink = 'http://docs.google.com/spreadsheets/d/' + Arr_Gruppe[menu.value][1] + '/edit?usp=sharing';
+        DrawLink = 'http://docs.google.com/drawings/d/'+ Arr_Gruppe[menu.value][2] + '/edit?usp=sharing';
+        DocumentLink = 'http://docs.google.com/document/d/'+Arr_Gruppe[menu.value][3]+ '/edit?usp=sharing';
+
         document.getElementById("Videocall").src = JitMeetingLink;
-        document.getElementById("Documentation").src = Arr_Gruppe[menu.value][1];
-        document.getElementById("Calculation").src = Arr_Gruppe[menu.value][2];
-        }
+        document.getElementById("Calculation").src = CalcLink;
+        document.getElementById("Drawing").src = DrawLink
+        document.getElementById("Documentation").src = DocumentLink;
+        };
     });
     </script>
   <!-- für iframe Side by Side vor width style="height: 100%; width: 49%; float: left; " einfügen-->  
 
   <details open>
     <summary>Talk</summary>
+    <div>
     <iframe ID='Videocall' src="https://meet.jit.si/Main-der-Talk#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D"
     name="jitsiConferenceFrame1"
     allow="camera; microphone; display-capture"
     allowfullscreen="true" 
     width="99%"
     height="40%"
-    scrolling="yes"></iframe>
+    scrolling="yes">
+</div>
+</iframe>
   </details>
   <details>
     <summary>Calc</summary>
@@ -84,59 +95,31 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
     allowfullscreen="true"
     scrolling="yes"></iframe>
   </details>
+  <details>
+    <summary>Draw</summary>
+    <iframe ID="Drawing" src="https://docs.google.com/drawings/d/1J_FauWu7o3GOi-H9Acd7x0Kgsl-ngka9XQvq0VaYegE/edit?usp=sharing"
+    width="99%"
+    height="54%"
+    frameborder="none"
+    allowfullscreen="true"
+    scrolling="yes"
+  ></iframe>
+</details>
+<div class="iframe">
   <details open>
     <summary>Doc</summary>
     <iframe ID="Documentation" src="https://docs.google.com/document/d/1v2pjM45nLPhy760mpEIxG9adLop4lQ4bAHfZ4qXxGBI/edit?usp=sharing"
-    width="99%"
+    width="100%"
     height="54%"
     frameborder="none"
     seamless="seamless"
     allowfullscreen="true"
     scrolling="yes"
   ></iframe>
-  </details>
-
-  
-
-  <!--übereinander
-  <div class="wrapper">
-    <iframe src="https://meet.jit.si/Grupp1-der-Talk#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D"
-    name="jitsiConferenceFrame1"
-    allow="camera; microphone; display-capture"
-    allowfullscreen="true" 
-    width="100%" height="40%"></iframe>
-
-    <iframe class="my-game-wrapper" src="https://docs.google.com/document/d/1jX3XHP3rZlVBV61daLnhZvsjNjtEc2RluIZ_436KbPI/edit"
-    width="100%"
-    frameborder="none"
-    seamless="seamless"
-    allowfullscreen="true"
-    scrolling="yes"></iframe>   
+</details>
 </div>
- side by sinde
-  <iframe src="https://drive.google.com/embeddedfolderview?id=1_hsubjiweDQV0dMhCeToNaG4uSpvBM6q#list" 
-  frameborder="0" 
-  scrolling="yes"      
-  allowfullscreen="true"                     
-      style="height: 100%; width: 49%; float: left; " 
-      height="100%" 
-      width="49%"
-      align="left">
-  </iframe>  
 
-  <iframe src="https://meet.jit.si/MY-JITSI-ROOM-NAME#config.startWithAudioMuted=false&config.startWithVideoMuted=false&config.prejoinPageEnabled=false&interfaceConfig.SHOW_CHROME_EXTENSION_BANNER=false&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.HIDE_INVITE_MORE_HEADER=true&interfaceConfig.SHOW_BRAND_WATERMARK=false&interfaceConfig.SHOW_JITSI_WATERMARK=false&interfaceConfig.SHOW_POWERED_BY=false&interfaceConfig.SHOW_PROMOTIONAL_CLOSE_PAGE=false&interfaceConfig.SHOW_WATERMARK_FOR_GUESTS=false&interfaceConfig.TOOLBAR_BUTTONS=%5B%22microphone%22%2C%22camera%22%2C%22closedcaptions%22%2C%22desktop%22%2C%22fullscreen%22%2C%22fodeviceselection%22%2C%22hangup%22%2C%22profile%22%2C%22chat%22%2C%22recording%22%2C%22livestreaming%22%2C%22etherpad%22%2C%22sharedvideo%22%2C%22settings%22%2C%22raisehand%22%2C%22videoquality%22%2C%22filmstrip%22%2C%22feedback%22%2C%22stats%22%2C%22shortcuts%22%2C%22tileview%22%2C%22videobackgroundblur%22%2C%22download%22%2C%22help%22%2C%22mute-everyone%22%5D" 
-     frameborder="0" 
-     scrolling="yes"  
-     name="jitsiConferenceFrame1"
-     allow="camera; microphone; display-capture"
-     allowfullscreen="true"
-     
-     style="overflow: hidden; height: 100%; width: 49%; " 
-     height="100%" 
-     width="49%"                                 
-      align="right">
-   </iframe>
-  -->
+
 </body>
 
 </html>
