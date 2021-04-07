@@ -44,7 +44,7 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
    
   <script>
     'use strict';
-    //Array in dem der Raumnahme des Jit-talk ist und die Google ID der Bearbeitungsdateien
+    
     var Arr_Gruppe = [["Main","1w4ROhRZfNN1Opc2TUWt-lrFF6KurtHq9avL8fELNBqY",	"1F5yftZSjCIlx2jUVaw8XdSEgw0yizEgZkoXdX6traBM",	"1iFJ9xXESJN8E2vRwjRzYpU7MNqmhSqhvHwdc4OxAl2k"],
      ["Gruppe1", "1XuPaRVN9HAbq9syvs88oqGV0Y2eYB42DdyD76s_uGXI","1sep8iWGDD1xeCBfIusqIhlUidYAwi64VFOhLN8edsrs",	"1zqTCsYB2rb7ApKx5OF4t_Rs436k0ryF2Daa1ron73Hc"],
      ["Gruppe2", "1D5zF7H18_Q-B6_JFa0MvNPmylmDlOd9WB53rgJbNeSk","1rjHUJAIoecAIIGLCL3qqpF2u9ViztW2HrBeywRbsR8k",	"11CE9CX05kluWanI19Fr-wu0jMOdd9f1b9839bXXKduY"]];
@@ -53,8 +53,6 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
      var DocumentLink; //
      var CalcLink; //
      var DrawLink; //
-
-     //Bei Änderung der Gruppenauswahl werden die Links für die Einzelnen iframes neu erstellt und belegt
     document.addEventListener('DOMContentLoaded', function () {    
        document.DropdownGruppe.GruppeWahl.addEventListener('change', CheckAuswahl);
          
@@ -72,8 +70,7 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
         };
     });
     </script>
-<!-- Layout der Seite-->
-<!-- für iframe Side by Side vor width style="height: 100%; width: 49%; float: left; " einfügen-->  
+  <!-- für iframe Side by Side vor width style="height: 100%; width: 49%; float: left; " einfügen-->  
 
   <details open>
     <summary>Talk</summary>
@@ -90,7 +87,7 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
   </details>
   <details>
     <summary>Calc</summary>
-    <iframe ID="Calculation" src="https://docs.google.com/spreadsheets/d/1w4ROhRZfNN1Opc2TUWt-lrFF6KurtHq9avL8fELNBqY/edit?usp=sharing"
+    <iframe ID="Calculation" src="https://docs.google.com/spreadsheets/d/1iZDX_WZ4qQfYFSSe1x0SbsqZ_bND3EdgQJs87cK4R20/edit?usp=sharing"
     width="99%"
     height="54%"
     frameborder="none"
@@ -100,7 +97,7 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
   </details>
   <details>
     <summary>Draw</summary>
-    <iframe ID="Drawing" src="https://docs.google.com/drawings/d/1F5yftZSjCIlx2jUVaw8XdSEgw0yizEgZkoXdX6traBM/edit?usp=sharing"
+    <iframe ID="Drawing" src="https://docs.google.com/drawings/d/1J_FauWu7o3GOi-H9Acd7x0Kgsl-ngka9XQvq0VaYegE/edit?usp=sharing"
     width="99%"
     height="54%"
     frameborder="none"
@@ -111,7 +108,7 @@ http://www-hera-b.desy.de/subgroup/computing/IT/www/selfhtml/html/frames/anzeige
 <div class="iframe">
   <details open>
     <summary>Doc</summary>
-    <iframe ID="Documentation" src="https://docs.google.com/document/d/1iFJ9xXESJN8E2vRwjRzYpU7MNqmhSqhvHwdc4OxAl2k/edit?usp=sharing"
+    <iframe ID="Documentation" src="https://docs.google.com/document/d/1v2pjM45nLPhy760mpEIxG9adLop4lQ4bAHfZ4qXxGBI/edit?usp=sharing"
     width="100%"
     height="54%"
     frameborder="none"
